@@ -1,3 +1,5 @@
+import os
+
 from fastapi import FastAPI, File, Form, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -10,9 +12,12 @@ from app.db import save_analysis, list_analyses
 
 app = FastAPI(title="Resume Analyzer API", version="0.1.0")
 
+_default_origins = "http://localhost:3000"
+_origins = [o.strip() for o in os.getenv("CORS_ORIGINS", _default_origins).split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
