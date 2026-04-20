@@ -41,7 +41,7 @@ export default function UploadForm({ onSubmit, loading }: Props) {
         <label className="flex cursor-pointer items-center gap-3 rounded-2xl border border-dashed border-white/15 bg-white/5 p-4 transition hover:border-indigo-400/50 hover:bg-white/10">
           <input
             type="file"
-            accept=".pdf,.txt"
+            accept=".pdf,.txt,.docx"
             onChange={(e) => setResume(e.target.files?.[0] ?? null)}
             className="hidden"
           />
@@ -59,7 +59,7 @@ export default function UploadForm({ onSubmit, loading }: Props) {
             ) : (
               <>
                 <p className="text-sm font-medium text-slate-300">Click to upload</p>
-                <p className="text-xs text-slate-500">PDF or TXT</p>
+                <p className="text-xs text-slate-500">PDF, DOCX, or TXT</p>
               </>
             )}
           </div>
